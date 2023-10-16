@@ -1,6 +1,8 @@
-﻿using System.Text;
+﻿using System.Globalization;
+using System.Text;
 using DesafioProjetoHospedagem.Models;
 
+CultureInfo.DefaultThreadCurrentCulture = new("pt-BR");
 Console.OutputEncoding = Encoding.UTF8;
 
 static void RunTest(int opcao)
@@ -27,7 +29,7 @@ static void RunTest(int opcao)
 
     // Exibe a quantidade de hóspedes e o valor da diária
     Console.WriteLine($"Hóspedes: {reserva.ObterQuantidadeHospedes()}");
-    Console.WriteLine($"Valor diária: {reserva.CalcularValorDiaria()}");
+    Console.WriteLine($"Valor da diária: {reserva.CalcularValorDiaria():c}");
 }
 
 while (true)
@@ -41,7 +43,7 @@ while (true)
     Console.WriteLine("4 - Sair");
     Console.WriteLine("Digite um dos números e aperte Enter para escolher uma opção.");
 
-    int opcao = 0;
+    int opcao;
 
     while (true)
     {
