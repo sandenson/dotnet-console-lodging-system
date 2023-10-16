@@ -1,72 +1,74 @@
-﻿using System.Text;
-using DesafioProjetoHospedagem.Models;
+﻿using System.Globalization;
+using System.Text;
+using LodgingProjectChallenge.Models;
 
+CultureInfo.DefaultThreadCurrentCulture = new("en-US");
 Console.OutputEncoding = Encoding.UTF8;
 
-static void RunTest(int opcao)
+static void RunTest(int option)
 {
-    int numeroDeHospedes = opcao == 3 ? 4 : 2;
-    int capacidade = 3;
-    int diasReservados = opcao == 2 ? 10 : 5;
+    int numberOfGuests = option == 3 ? 4 : 2;
+    int capacity = 3;
+    int reservedDays = option == 2 ? 10 : 5;
     
-    // Cria os modelos de hóspedes e cadastra na lista de hóspedes
-    List<Pessoa> hospedes = new();
+    // Creates  the guest models and and adds them to the guest list
+    List<Person> guests = new();
 
-    for (int i = 0; i < numeroDeHospedes; i++)
+    for (int i = 0; i < numberOfGuests; i++)
     {
-        hospedes.Add(new(nome: $"Hóspede {i + 1}"));
+        guests.Add(new(name: $"Guest {i + 1}"));
     }
 
-    // Cria a suíte
-    Suite suite = new(tipoSuite: "Premium", capacidade, valorDiaria: 30);
+    // Creates the suite
+    Suite suite = new(suiteType: "Premium", capacity, dailyRate: 30);
 
-    // Cria uma nova reserva, passando a suíte e os hóspedes
-    Reserva reserva = new(diasReservados);
-    reserva.CadastrarSuite(suite);
-    reserva.CadastrarHospedes(hospedes);
+    // Creates a new reservation and registers the suite and the guests
+    Reservation reservation = new(reservedDays);
+    reservation.RegisterSuite(suite);
+    reservation.RegisterGuests(guests);
 
-    // Exibe a quantidade de hóspedes e o valor da diária
-    Console.WriteLine($"Hóspedes: {reserva.ObterQuantidadeHospedes()}");
-    Console.WriteLine($"Valor diária: {reserva.CalcularValorDiaria()}");
+    // Displays the number of guests and the final rate
+    Console.WriteLine($"Guests: {reservation.GetGuestsCount()}");
+    Console.WriteLine($"Daily rate: {reservation.CalculateFinalRate():c}");
 }
 
 while (true)
 {
     Console.Clear();
 
-    Console.WriteLine("Olá. Escolha uma da opções de teste:");
-    Console.WriteLine("1 - Teste de sucesso");
-    Console.WriteLine("2 - Teste de sucesso (desconto)");
-    Console.WriteLine("3 - Teste de falha (mais hóspedes que possível)");
-    Console.WriteLine("4 - Sair");
-    Console.WriteLine("Digite um dos números e aperte Enter para escolher uma opção.");
+    Console.WriteLine("Hello. Choose one of the test options:");
+    Console.WriteLine("1 - Successful test");
+    Console.WriteLine("2 - Successful test (discount)");
+    Console.WriteLine("3 - Unsuccessful test (more guests than possible)");
+    Console.WriteLine("4 - Quit");
+    Console.WriteLine("Type one of the numbers and press Enter to choose an option.");
 
-    int opcao = 0;
+    int option;
 
     while (true)
     {
-        bool valido = int.TryParse(Console.ReadLine(), out opcao) && opcao >= 1 && opcao <= 4;
+        bool valid = int.TryParse(Console.ReadLine(), out option) && option >= 1 && option <= 4;
 
-        if (valido) break;
+        if (valid) break;
 
-        Console.WriteLine("Opção inválida! Tente novamente.");
+        Console.WriteLine("Invalid option! Try again.");
     }
 
-    if (opcao == 4) break;
+    if (option == 4) break;
 
     Console.Clear();
     
     try
     {
-        RunTest(opcao);
+        RunTest(option);
     }
     catch (Exception ex)
     {
-        Console.WriteLine($"Ocorreu um erro: {ex.Message}");
+        Console.WriteLine($"An error has occurred: {ex.Message}");
     }
 
-    Console.WriteLine("Aperte qualquer tecla para voltar ao menu.");
+    Console.WriteLine("Press any key to go back to the menu.");
     Console.ReadKey();
 }
 
-Console.WriteLine("Até mais.");
+Console.WriteLine("See you later.");
