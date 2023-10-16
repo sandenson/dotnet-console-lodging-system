@@ -1,25 +1,25 @@
-# DIO - Trilha .NET - Explorando a linguagem C#
+# DIO - .NET learning path - Exploring the C# Language
 
-www.dio.me
+[www.dio.me](www.dio.me)
 
-## Desafio de projeto
+## Project challenge
 
-Para este desafio, você precisará usar seus conhecimentos adquiridos no módulo de explorando a linguagem C#, da trilha .NET da DIO.
+For this challenge, you'll need to use the knowledge you acquired in the "Exploring the C# Language" module from DIO's .NET learning path.
 
-## Contexto
+## Context
 
-Você foi contratado para construir um sistema de hospedagem, que será usado para realizar uma reserva em um hotel. Você precisará usar a classe Person, que representa o hóspede, a classe Suíte, e a classe Reservation, que fará um relacionamento entre ambos.
+You've been hired to build a lodging system that will be used to perform reservations in a hotel. You'll need to use the `Person` class, which represents a guest, the `Suite` class, and the `Reservation` class, which will create a relationship between both.
 
-O seu programa deverá cálcular corretamente os valores dos métodos da classe Reservation, que precisará trazer a quantidade de hóspedes e o valor da diária, concedendo um desconto de 10% para caso a reserva seja para um período maior que 10 dias.
+Your program should correctly calculate the values of the `Reservation` class' methods, which will need to get the guest count and the rate price, granting a 10% discount in the case a reservation is made for a period longer than 10 days.
 
-## Regras e validações
+## Rules and validations
 
-1. Não deve ser possível realizar uma reserva de uma suíte com capacidade menor do que a quantidade de hóspedes. Exemplo: Se é uma suíte capaz de hospedar 2 pessoas, então ao passar 3 hóspedes deverá retornar uma exception.
-2. O método GetGuestsCount da classe Reservation deverá retornar a quantidade total de hóspedes, enquanto que o método CalculateFinalRate deverá retornar o valor da diária (Dias reservados x valor da diária).
-3. Caso seja feita uma reserva igual ou maior que 10 dias, deverá ser concedido um desconto de 10% no valor da diária.
+1. It should not be possible to create a reservation of a suite with a capacity lower than the number of guests. For example: If a suite is capable of accommodating 2 guests, then an exception should be thrown when over 3 guests try to reserve it.
+2. The `GetGuestsCount` method from the `Reservation` class should return the total amount of guests, whilst the `CalculateFinalRate` method should return the final rate value (reserved days x daily rate).
+3. If a reservation is made for at least 10 days, a 10% discount should be granted to the final rate value.
 
-![Diagrama de classe estacionamento](diagrama_classe_hotel.png)
+![The hotel's class diagram](diagrama_classe_hotel.png)
 
-## Solução
+## Solution
 
-O código está pela metade, e você deverá dar continuidade obedecendo as regras descritas acima, para que no final, tenhamos um programa funcional. Procure pela palavra comentada "TODO" no código, em seguida, implemente conforme as regras acima.
+The code is half finished, and you must continue it while following the rules described above, so that in the end we have a functional program. Look for the commented word "TODO" in the code, then implement according to the rules above.
